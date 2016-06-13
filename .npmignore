@@ -1,0 +1,8 @@
+# files
+
+.*
+
+# dirs
+
+node_modules
+tests
