@@ -76,7 +76,7 @@ function preview (source, line, options) {
     }
 
     if (pos && pos.line === line.number) {
-      text += '\n' + ' '.repeat(numberWidth + pos.column) + '^'
+      text += '\n' + ' '.repeat(numberWidth + pos.column - 1) + '^'
     }
 
     return text

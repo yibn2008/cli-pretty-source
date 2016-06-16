@@ -43,7 +43,7 @@ console.log(preview(source, { line: 12, column: 6}))
 
 ## Screen Shot
 
-//
+![Screen Shot](./screen-shot.png)
 
 ## API
 

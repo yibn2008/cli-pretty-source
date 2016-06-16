@@ -1,8 +1,10 @@
 # files
 
 .*
+*.png
 
 # dirs
 
 node_modules
 tests
+demo

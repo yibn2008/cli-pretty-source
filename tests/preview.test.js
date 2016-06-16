@@ -47,7 +47,7 @@ describe('preivew source code', function () {
     // preview line/column
     parts = preview(source, { line: 3, column: 5 }, { offset: 0 })
     assert(parts.indexOf('chalk') > 0)
-    assert(parts.match(/\n\s{10}\^/))
+    assert(parts.match(/\n\s{9}\^/))
 
     // preview without line number
     parts = strip(preview(source, 3, { lineNumber: false }))
