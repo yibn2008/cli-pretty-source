@@ -1,6 +1,6 @@
 {
   "name": "cli-source-preview",
-  "version": "1.0.0-beta0",
+  "version": "1.0.0",
   "description": "preview source code for CLI",
   "main": "index.js",
   "scripts": {
