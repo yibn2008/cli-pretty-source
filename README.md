@@ -62,6 +62,7 @@ Get source code parts by line and return with highlighted (CLI) string.
   - **offset**: extra lines number before/after specified line range *(default: 5)*
   - **lineNumber**: show line number or not *(default: true)*
   - **delimiter**: line delimiter *(default: '\n')*
+  - **cliColor**: show ASCI CLI highlight color, set false to turn off CLI highlight *(default: true)*
 
 #### Return
 

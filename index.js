@@ -5,12 +5,23 @@ const chalk = require('chalk')
 const PREVIEW_OPTS = {
   offset: 5,
   lineNumber: true,
-  delimiter: '\n'
+  delimiter: '\n',
+  cliColor: true
 }
 const DELIMITER = '-'.repeat(40)
 
 function rightPad (text, width) {
   return text + (width > text.length ? ' '.repeat(width - text.length) : '')
+}
+
+function colorer (cliColor) {
+  return function (type, string) {
+    if (cliColor) {
+      return chalk[type](string)
+    } else {
+      return string
+    }
+  }
 }
 
 /**
@@ -27,6 +38,7 @@ function rightPad (text, width) {
  * - offset: the extra lines number before/after specified line range (default: 5)
  * - lineNumber: show line number or not (default: true)
  * - delimiter: line delimiter (default: '\n')
+ * - cliColor: show ASCI CLI color (default: true)
  *
  * @param  {String} source  Source code
  * @param  {Mixed}  line    Line number to preivew
@@ -53,6 +65,8 @@ function preview (source, line, options) {
   // set options
   options = Object.assign({}, PREVIEW_OPTS, options)
 
+  let color = colorer(options.cliColor)
+
   // read source by from/to
   let lines = readSource(source, from, to, options.offset, options.delimiter)
   let numberWidth = String(to).length + 4 // [] + two space
@@ -70,9 +84,9 @@ function preview (source, line, options) {
     }
 
     if (line.number >= from && line.number <= to) {
-      text = chalk.red(`${prefix}${line.source}`)
+      text = color('red', `${prefix}${line.source}`)
     } else {
-      text = chalk.grey(prefix) + line.source
+      text = color('grey', prefix) + line.source
     }
 
     if (pos && pos.line === line.number) {
@@ -83,8 +97,8 @@ function preview (source, line, options) {
   })
 
   // add delimiter
-  parts.unshift(chalk.grey(DELIMITER))
-  parts.push(chalk.grey(DELIMITER))
+  parts.unshift(color('grey', DELIMITER))
+  parts.push(color('grey', DELIMITER))
 
   return parts.join('\n')
 }
